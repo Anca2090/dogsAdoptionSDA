@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Aboutpage</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/aboutpage.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+<body>
+
+<style>
+    h1 {
+        font-style: italic;
+        font-size: 45px;
+        text-shadow: 10px 10px 20px antiquewhite
+    }
+</style>
+<div class="bg-image">
+    <div class="text-block">
+        <p class="text-style">
+            Deciding to adopt a rescue pet or shelter dog is an important decision.<br>
+            It can be tough to take into account everything you’ll<br>
+            need to be prepared for (both expected and unexpected),<br>
+            but the rewards of adopting a four-legged friend outweigh most<br>
+            concerns and fears many people have concerning adoption. <br><br>
+            It goes without saying that when you adopt a rescue pet,<br>
+            you’re saving a life,but you’re actually saving more than one.<br>
+            By adopting, you’re helping make space for another animal in need and<br>
+            helping to give them the opportunity to become beloved pets.<br><br>
+            Many people worry about connecting with a rescued dog, but shelter dogs<br>
+            have so much love to give and they won’t ever stop giving it <br>
+            to you once you let them into your heart!<br><br>
+            Beyond just helping an animal in need, you’re giving<br>
+            a rescue an opportunity to find their voice,<br>
+            to be themselves and get a second chance to become<br>
+            a dog beyond the walls of shelter or rescue.<br>
+            You truly give them the keys to start anew in a life<br>
+            where second chances can often be hard to come by.<br><br>
+            One thing that’s for certain, is that life with a rescue dog <br>
+            brings big changes in the best way!<br>
+            Say goodbye to predictable nights and your boring routine and say hello<br>
+            to a new lease on life. <br>
+            Your new pet will keep life exciting, fresh and full of love.<br>
+        </p>
+
+
+    </div>
+    <div class="textblock">
+
+        <h1>
+            See our incredible dogs and adopt one now!!
+        </h1>
+
+    </div>
+    <div class="container">
+        <div class="topnav">
+            <a th:href="@{'/home'}"> <i class="fa fa-home"></i> Home </a>
+            <a href="/about"> <i class="fas fa-heart"></i> About Dog Adoption </a>
+            <a href="/contact"> <i class='fas fa-paw'></i> Contact </a>
+            <a href="/dogs"> <i class="fas fa-dog"></i> AvailableDogs </a>
+            <div class="topnav a" sec:authorize="!isAuthenticated()">
+                <a th:href="@{'/login'}"><i class="fas fa-user-alt"></i> Login</a>
+            </div>
+            <div class="topnav" sec:authorize="isAuthenticated()">
+                <form method="post" action="/logout">
+                    <button type="submit" class="nav-btn">
+                        Logout
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

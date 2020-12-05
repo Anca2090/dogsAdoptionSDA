@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+</head>
+<body>
+<div>
+    <form action="/edit" method="post" th:object="${dog}">
+        <input type="hidden" th:field="*{dogId}">
+        <h1>Edit dog!</h1>
+        <h3>Number:<br>
+            <input th:field="*{dogNumber}" type="text" placeholder="dogNumber"><br>
+        </h3>
+        <h3>Name:<br>
+            <input th:field="*{name}" type="text" placeholder="name"><br>
+        </h3>
+        <h3>Age:<br>
+            <input th:field="*{age}" type="text" placeholder="age"><br>
+        </h3>
+        <h3>Sex:<br>
+            <input th:field="*{sex}" type="text" placeholder="sex"><br>
+        </h3>
+        <h3>Description:<br>
+            <input th:field="*{description}" type="text" placeholder="description"><br>
+        </h3>
+        <h3>ImageUrl:<br>
+            <input th:field="*{imageUrl}" type="text" placeholder="imageUrl"><br>
+        </h3>
+        <h3>Registration date:<br>
+            <input th:field="*{registrationDate}" type="text" placeholder="registration date"><br>
+        </h3>
+        </h3>
+        <h3>Adopted:<br>
+            <input th:field="*{adopted}" type="text" placeholder="adopted"><br>
+        </h3>
+
+        <input type="submit">
+        <a href="/tables">Cancel</a>
+
+    </form>
+</div>
+
+
+</body>
+</html>

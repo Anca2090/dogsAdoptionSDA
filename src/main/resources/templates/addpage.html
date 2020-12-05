@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/tables.css}">
+    <title>Add Dog</title>
+</head>
+<body>
+<div class="w3-container">
+    <div class="w3-card-4">
+        <div class="w3-container w3-green">
+            <h1>Add new dog!</h1>
+        </div>
+            <form class="w3-container" action="/saveDog" method="post" th:object="${dog}">
+                <input type="hidden" id="dogId" th:field="*{dogId}">
+                <p>
+                    <label>Number</label>
+                    <input class="w3-input" type="text" id="dogNumber" th:field="*{dogNumber}">
+                </p>
+                <p>
+                    <label>Name</label>
+                    <input class="w3-input" type="text" id="name" th:field="*{name}">
+                </p>
+                <p>
+                    <label>Age</label>
+                    <input class="w3-input" type="text" id="age" th:field="*{age}">
+                </p>
+                <p>
+                    <label>Sex</label>
+                    <input class="w3-input" type="text" id="sex" th:field="*{sex}">
+                </p>
+                <p>
+                    <label>Description</label>
+                    <input class="w3-input" type="text" id="description" th:field="*{description}">
+                </p>
+                <p>
+                    <label>ImageUrl</label>
+                    <input class="w3-input" type="text" id="imageUrl" th:field="*{imageUrl}">
+                </p>
+                <p>
+                    <label>Registration date</label>
+                    <input class="w3-input" type="text" id="registration date" th:field="*{registrationDate}">
+                </p>
+                <p>
+                    <label>Adopted</label>
+                    <input class="w3-input" type="text" placeholder="true/false" id="adopted" th:field="*{adopted}">
+                </p>
+                <input class="button" type="submit">
+                <a class="button" href="/tables">Cancel</a>
+            </form>
+        </div>
+</div>
+
+
+</body>
+</html>

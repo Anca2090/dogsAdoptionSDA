@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Dogs Adoption Center</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/frontpage.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/tables.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<body>
+
+<div class="bg-img">
+    <div class="container">
+        <div class="topnav">
+            <a th:href="@{'/home'}"> <i class="fa fa-home"></i> Home </a>
+            <a href="/about"> <i class="fas fa-heart"></i> About Dog Adoption </a>
+            <a href="/contact"> <i class='fas fa-paw'></i> Contact </a>
+            <a href="/dogs"> <i class="fas fa-dog"></i> AvailableDogs </a>
+            <div class="topnav" sec:authorize="!isAuthenticated()">
+                <a th:href="@{'/login'}"><i class="fas fa-user-alt"></i> Login</a>
+            </div>
+            <div class="topnav" sec:authorize="isAuthenticated()">
+                <form method="post" action="/logout">
+                    <button type="submit">
+                        Logout
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="bttn" sec:authorize="hasAuthority('ROLE_1')">
+            <a th:href="@{'/tables'}"><i class="fas fa-user-check"></i> Administration </a>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!--<img scr="/images/dogs/...numele imaginii"> in baza de date la img_url pun denumirea imaginii din folderul dogs-->
+
+<!--<a src="mailto:test@gmail.com"> Test mail </a>-->
+<!--<a src="tel:0756483945"> Test phone </a>-->
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/description.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <title>Description</title>
+</head>
+<body>
+
+<style>
+    h1 {
+        font-style: italic;
+        font-size: 30px;
+        text-shadow: 10px 10px 20px antiquewhite
+    }
+</style>
+
+<div class="bg-im">
+    <div class="container">
+        <div class="topnav">
+            <a th:href="@{'/home'}"> <i class="fa fa-home"></i> Home  </a>
+            <a href="/about"> <i class="fas fa-heart"></i> About Dog Adoption  </a>
+            <a href="/contact"> <i class='fas fa-paw'></i>  Contact  </a>
+            <a href="/dogs"> <i class="fas fa-dog"></i>  AvailableDogs  </a>
+            <div class="topnav a" sec:authorize="!isAuthenticated()">
+                <a th:href="@{'/login'}"><i class="fas fa-user-alt"></i> Login</a>
+            </div>
+            <div class="topnav" sec:authorize="isAuthenticated()">
+                <form method="post" action="/logout">
+                    <button type="submit" class="nav-btn">
+                        Logout
+                    </button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div class="img">
+        <img th:src="'/images/dogs/' + ${doggos.getImageUrl()}"></img>
+    </div>
+
+    <div class="text-blocks">
+        <h1>
+            <span th:text="${doggos.getDescription()}"></span>
+        </h1>
+    </div>
+
+
+
+
+
+</div>
+
+
+
+</body>
+</html>

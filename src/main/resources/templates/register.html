@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+<form action="/register-user" method="post" th:object="${registerModel}">
+    <h1>Register</h1>
+
+    <input th:field="*{firstName}" type="text" placeholder="Enter first name" name="firstName" required >
+    <input th:field="*{lastName}" type="text" placeholder="Enter last name" name="lastName" required >
+    <input th:field="*{address}" type="text" placeholder="Enter address" name="address" required >
+    <input th:field="*{phoneNumber}" type="text" placeholder="Enter phone number" name="phoneNumber" required >
+    <input th:field="*{email}" type="text" placeholder="Enter email" name="email" required >
+
+    <input th:field="*{username}" type="text" placeholder="Enter username" name="username" required >
+    <input th:field="*{password}" type="password" placeholder="Enter password" name="password" required >
+
+    <select th:field="*{userTypeId}">
+        <option  th:value="0">Select user type</option>
+        <option  th:each="userType:${userTypes}" th:value="${userType.userTypeId}"
+                 th:text="${userType.userTypeName}" >
+        </option>
+    </select>
+
+    <button class="button" type="submit" >Register</button>
+
+</form>
+</body>
+</html>
+<!--th:selected="${userType.userTypeId==registerModel.userTypeId}-->

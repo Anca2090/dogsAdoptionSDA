@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/tables.css}">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>Title</title>
+
+</head>
+<body>
+<div>
+    <h1>Dogs</h1>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Number</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Sex</th>
+            <th>Description</th>
+            <th>ImageUrl</th>
+            <th>Registration Date</th>
+            <th>Adopted</th>
+            <th>Deleted</th>
+            <th sec:authorize="hasAuthority('ROLE_1')">Edit/Delete</th>
+
+        </tr>
+        <tr th:each="dog:${dogs}">
+            <td th:text="${dog.dogId}"></td>
+            <td th:text="${dog.dogNumber}"></td>
+            <td th:text="${dog.name}"></td>
+            <td th:text="${dog.age}"></td>
+            <td th:text="${dog.sex}"></td>
+            <td th:text="${dog.description}"></td>
+            <td th:text="${dog.imageUrl}"></td>
+            <td th:text="${dog.registrationDate}"></td>
+            <td th:text="${dog.adopted}"></td>
+            <td th:text="${dog.deleted}"></td>
+            <td>
+                <a class="button" th:href="@{'/editDog/' + ${dog.dogId}}">Edit</a>
+                <a class="button" th:href="@{'/deleteDog/' + ${dog.dogId}}">Delete</a>
+
+            </td>
+
+
+        </tr>
+    </table>
+    <br>
+    <div sec:authorize="hasAuthority('ROLE_1')">
+
+        <a class="button" th:href="@{'/addDog/'}">AddNewDog</a>
+    </div>
+
+
+    </form>
+</div>
+<br><br><br>
+
+
+<h1>Adopters</h1>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Address</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+
+        <th sec:authorize="hasAuthority('ROLE_1')">Delete</th>
+        <th sec:authorize="hasAuthority('ROLE_1')">Edit</th>
+    </tr>
+    <tr th:each="adopter:${adopters}">
+        <td th:text="${adopter.adoptersEntity.adopterId}"></td>
+        <td th:text="${adopter.adoptersEntity.firstName}"></td>
+        <td th:text="${adopter.adoptersEntity.lastName}"></td>
+        <td th:text="${adopter.adoptersEntity.address}"></td>
+        <td th:text="${adopter.adoptersEntity.phoneNumber}"></td>
+        <td th:text="${adopter.adoptersEntity.email}"></td>
+
+
+        <td>
+            <button class="button" sec:authorize="hasAuthority('ROLE_1')">
+                <a th:href="@{'/deleteAdopter/' + ${adopter.getUsername()}}">Delete</a>
+            </button>
+        </td>
+        <td>
+            <button class="button" sec:authorize="hasAuthority('ROLE_1')">
+                <a th:href="@{'/editAdopter/' + ${adopter.getUsername()}}">Edit</a>
+            </button>
+        </td>
+    </tr>
+
+
+
+</table>
+<br><br><br>
+
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/tables.css}">
+<!--    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
+    <title>Title</title>
+</head>
+<body>
+<form action="/saveAdoption" method="post" th:object="${adoption}" sec:authorize="hasAuthority('ROLE_2')">
+    <h1>Adopt a dog</h1>
+
+    <select th:field="*{dogNumber}">
+        <option th:value="0">Select a dog</option>
+        <option th:each="dog: ${dogs}" th:value="${dog.dogNumber}"></option>
+    </select>
+
+    <input type="datetime-local" th:field="*{adoptionDate}" placeholder="Enter adoption date" name="adoptionDate">
+
+    <button class="button" type="submit">Submit</button>
+
+</form>
+
+</body>
+</html>
